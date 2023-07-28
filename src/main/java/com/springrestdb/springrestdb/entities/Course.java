@@ -1,6 +1,11 @@
 package com.springrestdb.springrestdb.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Course {
+    @Id
     private long id;
     private String title;
     private String description;
@@ -10,6 +15,7 @@ public class Course {
         this.title = title;
         this.description = description;
     }
+    public Course() {}
 
     public long getId() {
         return id;

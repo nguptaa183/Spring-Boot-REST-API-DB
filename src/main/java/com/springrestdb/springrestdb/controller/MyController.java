@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MyController {
@@ -26,7 +27,7 @@ public class MyController {
 
     //Get course by ID
     @GetMapping("/courses/{courseID}")
-    public Course getCourseByID(@PathVariable String courseID) {
+    public Optional<Course> getCourseByID(@PathVariable String courseID) {
         return this.courseService.getCourseByID(Long.parseLong(courseID));
     }
 
@@ -44,8 +45,8 @@ public class MyController {
 
     //Get course by ID
     @DeleteMapping("/courses/{courseID}")
-    public String deleteCourseByID(@PathVariable String courseID) {
-        return this.courseService.deleteCourseByID(Long.parseLong(courseID));
+    public void deleteCourseByID(@PathVariable String courseID) {
+        this.courseService.deleteCourseByID(Long.parseLong(courseID));
     }
 }
 
